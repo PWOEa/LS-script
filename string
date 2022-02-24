@@ -1,0 +1,49 @@
+local ScreenGui = Instance.new("ScreenGui")
+local FPS = Instance.new("TextLabel")
+local NAME = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+FPS.Name = "FPS"
+FPS.Parent = ScreenGui
+FPS.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FPS.BackgroundTransparency = 1.000
+FPS.Position = UDim2.new(0.21174866, 0, 0.128738627, 0)
+FPS.Size = UDim2.new(0, 200, 0, 50)
+FPS.Font = Enum.Font.GothamBold
+FPS.Text = "99 FPS"
+FPS.TextColor3 = Color3.fromRGB(189, 189, 189)
+FPS.TextSize = 15.000
+
+NAME.Name = "NAME"
+NAME.Parent = ScreenGui
+NAME.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NAME.BackgroundTransparency = 1.000
+NAME.Position = UDim2.new(0.0942623168, 0, 0.128738627, 0)
+NAME.Size = UDim2.new(0, 200, 0, 50)
+NAME.Font = Enum.Font.GothamBold
+NAME.Text = "BOX.SOLUTION |"
+NAME.TextColor3 = Color3.fromRGB(189, 189, 189)
+NAME.TextSize = 15.000
+
+-- Scripts:
+
+local function MRJZ_fake_script() -- FPS.LocalScript 
+	local script = Instance.new('LocalScript', FPS)
+
+	local RS = game:GetService("RunService")
+	local frames = 0
+	
+	RS.RenderStepped:Connect(function()
+		frames = frames + 1
+	end)
+	
+	while wait(1) do
+		script.Parent.Text = frames .. " FPS"
+		frames = 0
+	end
+end
+coroutine.wrap(MRJZ_fake_script)()
